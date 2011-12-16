@@ -2,6 +2,6 @@
 	<something-else>
 		testing
 		<another_child attribute='4' />
-		testing	
+		testing
 	</something-else>
 </something>

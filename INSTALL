@@ -3,7 +3,7 @@
 The easiest way to install aws/s3 is with Rubygems:
 
   % sudo gem i aws-s3 -ry
- 
+
 == Directly from svn
 
  % svn co svn://rubyforge.org/var/svn/amazon/s3/trunk aws
@@ -11,26 +11,26 @@ The easiest way to install aws/s3 is with Rubygems:
 == As a Rails plugin
 
 If you want to use aws/s3 with a Rails application, you can export the repository
-into your plugins directory and then check it in: 
+into your plugins directory and then check it in:
 
   % cd my-rails-application/vendor/plugins
   % svn export svn://rubyforge.org/var/svn/amazon/s3/trunk aws
   % svn add aws
-  
+
 Or you could pull it down with an svn:externals:
 
   % cd my-rails-application/vendor/plugins
   % svn propedit svn:externals .
-  
+
 Then add the following line, save and exit:
 
   aws svn://rubyforge.org/var/svn/amazon/s3/trunk
-  
+
 If you go the svn route, be sure that you have all the dependencies installed. The list of dependencies follow.
-  
+
 == Dependencies
 
-AWS::S3 requires Ruby 1.8.4 or greater. 
+AWS::S3 requires Ruby 1.8.4 or greater.
 
 It also has the following dependencies:
 

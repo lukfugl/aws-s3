@@ -6,7 +6,7 @@ not_implemented: >
     <Header>Host</Header>
     <HostId>oNZgzTTmWiovwGGwHXAzz+1vRmAJVAplS9TF7B0cuOGfEwoi7DYSTa/1Qhv90CfW</HostId>
   </Error>
-  
+
 access_denied: >
   <Error>
     <Code>AccessDenied</Code>
@@ -14,7 +14,7 @@ access_denied: >
     <RequestId>F99F6D58B96C98E0</RequestId>
     <HostId>XwCF7k3llrcEwtoHR7MusZ6ilCdF5DKDmwYpglvjKNjvwo24INCeXlEpo1M03Wxm</HostId>
   </Error>
-  
+
 internal_error: >
   <Error>
     <Code>InternalError</Code>
@@ -22,7 +22,7 @@ internal_error: >
     <RequestId>F99F6D223B96C98E0</RequestId>
     <HostId>XwCF7k3llrcEwtoHR7MusZ6ilCdF5DKDmwYpglvjKNjvwo24INCeXlEpo1M03Wxm</HostId>
   </Error>
-  
+
 error_with_no_message: >
   <Error>
     <Code>InvalidArgument</Code>

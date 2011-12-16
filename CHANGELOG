@@ -48,7 +48,7 @@ head:
 
 - Add :authenticated option to url_for. When passing false, don't generate signature parameters for query string.
 
-- Make url_for accept custom port settings. [Rich Olson] 
+- Make url_for accept custom port settings. [Rich Olson]
 
 0.3.0:
 
