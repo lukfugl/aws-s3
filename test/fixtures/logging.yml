@@ -5,7 +5,7 @@ logging_enabled: >
       <TargetPrefix>access_log-</TargetPrefix>
     </LoggingEnabled>
   </BucketLoggingStatus>
-  
+
 logging_disabled: >
   <BucketLoggingStatus xmlns="http://s3.amazonaws.com/doc/2006-03-01/">
     <!--<LoggingEnabled>

@@ -3,29 +3,29 @@ require 'rake'
 require 'rdoc/rdoc'
 
 module RDoc
-  class CodeInfo    
+  class CodeInfo
     class << self
       def parse(wildcard_pattern = nil)
         @info_for_corpus = parse_files(wildcard_pattern)
       end
-      
+
       def for(constant)
         new(constant).info
       end
-      
+
       def info_for_corpus
         raise RuntimeError, "You must first generate a corpus to search by using RDoc::CodeInfo.parse" unless @info_for_corpus
         @info_for_corpus
       end
-      
+
       def parsed_files
         info_for_corpus.map {|info| info.file_absolute_name}
       end
-      
+
       def files_to_parse
         @files_to_parse ||= Rake::FileList.new
       end
-      
+
       private
         def parse_files(pattern)
           files   = pattern ? Rake::FileList[pattern] : files_to_parse
@@ -33,25 +33,25 @@ module RDoc
           options.parse(files << '-q', RDoc::GENERATORS)
           rdoc.send(:parse_files, options)
         end
-        
+
         def rdoc
           TopLevel.reset
           rdoc  = RDoc.new
           stats = Stats.new
           # We don't want any output so we'll override the print method
-          stats.instance_eval { def print; nil end } 
+          stats.instance_eval { def print; nil end }
           rdoc.instance_variable_set(:@stats, stats)
           rdoc
         end
     end
-    
+
     attr_reader :info
     def initialize(location)
       @location = CodeLocation.new(location)
       find_constant
       find_method if @location.has_method?
     end
-    
+
     private
       attr_reader :location
       attr_writer :info
@@ -64,7 +64,7 @@ module RDoc
           return if info
         end
       end
-      
+
       def find_method
         return unless info
         self.info = info.method_list.detect do |method_info|
@@ -79,7 +79,7 @@ module RDoc
         end
       end
   end
-  
+
   class CodeLocation
     attr_reader :location
 
@@ -119,14 +119,14 @@ if __FILE__ == $0
     def setup
       RDoc::CodeInfo.parse(__FILE__)
     end
-    
+
     def test_constant_lookup
       assert RDoc::CodeInfo.for('RDoc')
-      
+
       info = RDoc::CodeInfo.for('RDoc::CodeInfo')
-      assert_equal 'CodeInfo', info.name      
+      assert_equal 'CodeInfo', info.name
     end
-    
+
     def test_method_lookup
       {'RDoc::CodeInfo.parse'          => true,
        'RDoc::CodeInfo::parse'         => true,
@@ -140,7 +140,7 @@ if __FILE__ == $0
        end
     end
   end
-  
+
   class CodeLocationTest < Test::Unit::TestCase
     def test_parts
        {'Foo'           => %w(Foo),
@@ -152,7 +152,7 @@ if __FILE__ == $0
           assert_equal parts, RDoc::CodeLocation.new(location).parts
         end
     end
-    
+
     def test_namespace_parts
       {'Foo'           => %w(Foo),
        'Foo::Bar'      => %w(Foo Bar),
@@ -163,7 +163,7 @@ if __FILE__ == $0
          assert_equal namespace_parts, RDoc::CodeLocation.new(location).namespace_parts
        end
      end
-    
+
     def test_has_method?
       {'Foo'           => false,
        'Foo::Bar'      => false,
@@ -174,7 +174,7 @@ if __FILE__ == $0
          assert_equal has_method_result, RDoc::CodeLocation.new(location).has_method?
        end
      end
-     
+
     def test_instance_method?
       {'Foo'           => false,
        'Foo::Bar'      => false,
@@ -185,7 +185,7 @@ if __FILE__ == $0
          assert_equal is_instance_method, RDoc::CodeLocation.new(location).instance_method?
        end
      end
-     
+
      def test_class_method?
        {'Foo'           => false,
         'Foo::Bar'      => false,
@@ -196,7 +196,7 @@ if __FILE__ == $0
           assert_equal is_class_method, RDoc::CodeLocation.new(location).class_method?
         end
       end
-      
+
       def test_method_name
         {'Foo'           => nil,
          'Foo::Bar'      => nil,

@@ -1,14 +1,14 @@
---- 
-topic: 
+---
+topic:
   parent-id: {}
 
   title: {}
 
-  approved: 
+  approved:
     type: boolean
-  id: 
+  id:
     type: integer
-  viewed-at: 
+  viewed-at:
     type: datetime
-  written-on: 
+  written-on:
     type: date

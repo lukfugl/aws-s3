@@ -1,6 +1,6 @@
---- 
-something: 
-  something-else: 
+---
+something:
+  something-else:
     __content__: "\n\
       \t\ttesting\n\
       \t"
